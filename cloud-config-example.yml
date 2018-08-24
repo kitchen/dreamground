@@ -1,0 +1,27 @@
+#cloud-config
+
+# this makes it so the ubuntu user doesn't get created
+# we'll be setting up our users with chef, this should just start up and run chef
+users: []
+
+chef:
+  install_type: omnibus
+  server_url: https://api.chef.io/organizations/kitchenpersonal
+  # tbh I don't know if this name is at all necessary :shrug:
+  validation_name: kitchenpersonal-validator
+  validation_cert: |
+    VALIDATION CERT GOES HERE
+    # because yaml is sensitive to spaces, it's hard to template this
+    # and I'm lazy so use your imagination and copy your validation cert
+    # into here
+
+  run_list:
+    - "recipe[dreamground::default]"
+  # strangely, this isn't default?
+  exec: true
+  # undocumented parameter, but without this the client starts up with splay
+  # and takes forever to decide to run.
+  exec_arguments: "--once"
+
+output: {all: '| tee -a /var/log/cloud-init-output.log'}
+
