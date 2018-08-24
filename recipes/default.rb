@@ -12,3 +12,7 @@ package 'zsh'
 
 users_manage 'adm'
 
+sudo 'adm' do
+  group 'adm'
+  nopasswd true
+end
