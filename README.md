@@ -19,6 +19,11 @@ Note that if you use my example cloud-config and don't have the users databag se
 Also, you'll want to make sure that at least one of your users is in the `adm` group or you won't be able to get root.
 
 # testing
-#
+
 I don't have any tests but I do at least converge this using test-kitchen. I'll probably use this as a bit of a playground for chef stuff too. Pull requests welcome :)
+
+
+# License
+
+WTFPL because honestly I doubt any of this stuff is really licensable anyways.
 
